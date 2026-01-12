@@ -1,0 +1,5 @@
+#!/Users/rishabh/ML/Projects/Student_Performance_predictor/svenv/bin/python3.10
+
+from idlelib.pyshell import main
+if __name__ == '__main__':
+    main()
