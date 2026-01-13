@@ -1,5 +1,5 @@
 import sys
-import logging           # that i have created
+from src.logger import logging          # that i have created
 
 '''Wherever in the program in exception try catch wherever you use CustomException it will call this'''
 
