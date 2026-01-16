@@ -12,7 +12,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
-@dataclass # this is a decorator, using this we will be able to directly define our class variable
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTrasnformationConfig
+
+@dataclass # this is a decorator, using this we will be able to directly define our class variable 
+# @dataclass is a decorator that transforms a normal class into a dataclass.
 
 class DataIngestionConfig :
     '''It does not perform ingestion itself —
@@ -33,7 +37,8 @@ class DataIngestionConfig :
 
 class DataIngestion:
     def __init__(self):
-         self.ingestion_config= DataIngestionConfig() # as soon as I call this the 3 paths above will be saved inside this class vairable
+         self.ingestion_config= DataIngestionConfig() # as soon as I call this the 3 paths above will be saved inside this class variable
+         # this means that every data ingestion object will have its own config
           
     def initiate_data_ingestion(self):
         # here I will write the code so It could read from the database
@@ -63,7 +68,10 @@ class DataIngestion:
          except Exception as e:
               raise CustomException(e,sys) 
                     
-# To test it
+''' To test it '''
 if __name__ =="__main__":
      obj=DataIngestion()
-     obj.initiate_data_ingestion() 
+     train_data, test_data = obj.initiate_data_ingestion()
+
+     data_transformation = DataTransformation()
+     data_transformation.initiate_data_transform(train_data,test_data)
