@@ -84,3 +84,6 @@ class ModelTrainer:
           except Exception as e:
                raise CustomException(e,sys)
      
+'''
+pickle file is created so that the trained model is saved so you can test it without training it again
+'''
