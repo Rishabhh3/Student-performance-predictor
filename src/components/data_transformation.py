@@ -19,6 +19,7 @@ from src.utils import save_object
 @dataclass
 class DataTrasnformationConfig: # It will give me any path i will be requiring, any input i may require for transformation   
     preprocessor_obj_file_path = os.path.join('artifacts','preprocessor.pkl')
+# config tells you save it here at this path
 
 class DataTransformation:
     def __init__(self):
@@ -102,7 +103,11 @@ class DataTransformation:
              target_feature_test_df = test_df[target_column_name]
 
              logging.info(f"Applying preprocessing object on training dataframe and testing dataframe")
-
+             '''
+            DataFrame may contain: categorical strings, missing values, skewed numeric distributions,
+            outliers, scale disparities, ML algorithms cannot operate directly on:
+            so we do fit_transform, .transform
+            '''
              input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
              input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
